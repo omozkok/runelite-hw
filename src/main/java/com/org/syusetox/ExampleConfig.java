@@ -1,4 +1,4 @@
-package com.example;
+package com.org.syusetox;
 
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
@@ -8,12 +8,12 @@ import net.runelite.client.config.ConfigItem;
 public interface ExampleConfig extends Config
 {
 	@ConfigItem(
-		keyName = "greeting",
-		name = "Welcome Greeting",
-		description = "The message to show to the user when they login"
+		keyName = "timeTick",
+		name = "Time Ticks",
+		description = "Check to time tick"
 	)
-	default String greeting()
+	default boolean timeTick()
 	{
-		return "Hello";
+		return false;
 	}
 }
