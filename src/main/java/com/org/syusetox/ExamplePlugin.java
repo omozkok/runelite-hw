@@ -8,6 +8,7 @@ import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
+import net.runelite.api.events.AnimationChanged;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
@@ -42,6 +43,18 @@ public class ExamplePlugin extends Plugin
 
 			double tickDurationSeconds = tickDuration / 1_000_000_000.0;
 			log.info("Tick duration: " + Double.toString(tickDurationSeconds));
+		}
+	}
+
+	@Subscribe
+	public void onAnimationChanged(AnimationChanged event) {
+		if (event.getActor() == client.getLocalPlayer()) {
+			int anim = event.getActor().getAnimation();
+			log.info(Integer.toString(anim));
+			if (anim == 722) { //Magic Cast Anim
+				log.info("Enchanting");
+
+			}
 		}
 	}
 
